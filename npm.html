@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Formulir Input Nama dan NPM</h1>
-    <form action="#" method="post">
+    <form action="#" method="POST">
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama" required><br><br>
 
@@ -16,5 +16,20 @@
 
         <input type="submit" value="Submit">
     </form>
+
+    <h2>Data yang Dikirim</h2>
+    <p id="result"></p>
+
+    <script>
+        // Menangani pengiriman form
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Menghindari reload halaman
+
+            const nama = document.getElementById('nama').value;
+            const npm = document.getElementById('npm').value;
+
+            document.getElementById('result').innerText = `Nama: ${nama} | NPM: ${npm}`;
+        });
+    </script>
 </body>
 </html>
