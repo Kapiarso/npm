@@ -1,41 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qiblat Direction</title>
+    <title>Form Input Nama dan NPM</title>
 </head>
 <body>
-    <h1>Calculate Qiblat Direction</h1>
-    <form id="qiblatForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+    <h1>Formulir Input Nama dan NPM</h1>
+    <form action="#" method="POST">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
 
-        <label for="latitude">Latitude:</label>
-        <input type="text" id="latitude" name="latitude"><br><br>
+        <label for="npm">NPM:</label>
+        <input type="text" id="npm" name="npm" required><br><br>
 
-        <label for="longitude">Longitude:</label>
-        <input type="text" id="longitude" name="longitude"><br><br>
-
-        <button type="submit">Submit</button>
+        <input type="submit" value="Submit">
     </form>
 
-    <h2 id="result"></h2>
+    <h2>Data yang Dikirim</h2>
+    <p id="result"></p>
 
     <script>
-        document.getElementById("qiblatForm").addEventListener("submit", function(event){
-            event.preventDefault();
-            var name = document.getElementById("name").value;
-            var latitude = document.getElementById("latitude").value;
-            var longitude = document.getElementById("longitude").value;
+        // Menangani pengiriman form
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Menghindari reload halaman
 
-            var url = `http://<your-python-api-url>/get_qiblat?name=${name}&latitude=${latitude}&longitude=${longitude}`;
+            const nama = document.getElementById('nama').value;
+            const npm = document.getElementById('npm').value;
 
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("result").innerHTML = `Hello ${data.name}, the Qiblat direction is: ${data.qiblat} degrees from North.`;
-                });
+            document.getElementById('result').innerText = `Nama: ${nama} | NPM: ${npm}`;
         });
     </script>
 </body>
